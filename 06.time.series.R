@@ -1,5 +1,5 @@
 # Time series analysis
-# Greenland increase of temperature
+# Greenland increase in temperature
 # Data and code from Emanuela Cosma
 
 # install.packages("raster")
