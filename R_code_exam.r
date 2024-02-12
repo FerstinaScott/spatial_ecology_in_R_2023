@@ -75,21 +75,4 @@ par(mfrow = c(1, 1))
 # Visualizing the change in NDVI
 ndvi_change <- ndvi2019 - ndvi2001
 plot(ndvi_change, main = "Change in NDVI", col = cl, legend = TRUE)
-
-# Creating a stack data frame for boxplot visualization
-# Extracting the pixel values as vectors
-values_2001 <- values(yuri2001)
-values_2019 <- values(yuri2019)
-
-# Creating a data frame for boxplot
-boxplot_data <- data.frame(
-  Image = rep(c("2001", "2019"), each = length(values_2001)),
-  NDVI = c(values_2001, values_2019)
-)
-
-# Creating a boxplot
-ggplot(boxplot_data, aes(x = Image, y = NDVI, fill = Image)) +
-  geom_boxplot() +
-  labs(title = "Boxplot of NDVI Distribution (2001 vs. 2019)", x = "Image", y = "NDVI") +
-  theme_minimal()
 # The ndvi_2001 and ndvi_2019 are directly calculated from the red and NIR bands of the raster images
