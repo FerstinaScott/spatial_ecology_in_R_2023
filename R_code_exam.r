@@ -2,7 +2,7 @@
 
 # Installing the packages to be used
 library(terra)
-library(ggplot2)
+library(imageRy)
 
 # Setting the working directory and assign it to a value
 setwd("C:/Users/ferstinawady.scott/Desktop/Spatial_Ecology_Exam/R_code_exam.r")
