@@ -38,6 +38,7 @@ total_deforestation_2001 <- sum(values(yuri2001))
 total_deforestation_2019 <- sum(values(yuri2019))
 percentage_change <- ((total_deforestation_2019 - total_deforestation_2001) / total_deforestation_2001) * 100
 
+
 cat("Total Deforested Area in 2001:", total_deforestation_2001, "\n")
 cat("Total Deforested Area in 2019:", total_deforestation_2019, "\n")
 cat("Percentage Change:", percentage_change, "%\n")
@@ -53,6 +54,7 @@ dev.off()
 
 # Analyzing vegetation indices; NDVI (Normalized Difference Vegetation Index):
 # The NDVI values range from -1 to 1, where higher values indicate healthier vegetation. 
+# NDVI = NIR - RED / NIR + RED
 # NDVI 2001
 ndvi2001 = (yuri2001[[1]] - yuri2001[[2]]) / (yuri2001[[1]] + yuri2001[[2]])
 ndvi2001
@@ -76,3 +78,24 @@ par(mfrow = c(1, 1))
 ndvi_change <- ndvi2019 - ndvi2001
 plot(ndvi_change, main = "Change in NDVI", col = cl, legend = TRUE)
 # The ndvi_2001 and ndvi_2019 are directly calculated from the red and NIR bands of the raster images
+
+# DVI is calculated as the difference between the NIR and red bands without normalization.
+# Formula: 
+# DVI is used to measure absolute vegetation density and can be sensitive to changes in atmospheric conditions and sensor calibration.
+# DVI = NIR − RED
+
+# DVI 2001
+dvi_2001 = yuri2001[[1]] - yuri2001[[2]]
+plot(dvi_2001)
+
+cl <- colorRampPalette(c("dark blue", "yellow", "red")) (100)
+plot(dvi_2001, col=cl)
+
+# DVI 2019
+dvi_2019 = yuri2019[[1]] - yuri2019[[2]]
+plot(dvi_2019, col=cl)
+
+# Plotting side by side
+par(mfrow=c(1,2))
+plot(dvi_2001, main = "DVI 2001", col=cl)
+plot(dvi_2019, main = "DVI 2019", col=cl)
